@@ -93,7 +93,7 @@
 
                             <div class="col">
                                 <label for="inputName" class="control-label">مبلغ التحصيل</label>
-                                <input type="text" class="form-control" id="inputName" name="Amount_collection"
+                                <input type="text" class="form-control" id="Amount_collection" name="Amount_collection"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                         </div>
@@ -243,35 +243,35 @@
 
     <script>
         function myFunction() {
+            var Amount_collection = parseFloat(document.getElementById("Amount_collection").value) || 0; // مبلغ التحصيل
+    var Amount_Commission = parseFloat(document.getElementById("Amount_Commission").value) || 0; // مبلغ العمولة
+    var Discount = parseFloat(document.getElementById("Discount").value) || 0; // الخصم
+    var Rate_VAT = parseFloat(document.getElementById("Rate_VAT").value) || 0; // نسبة الضريبة
+    var Value_VAT; // القيمة المضافة
 
-            var Amount_Commission = parseFloat(document.getElementById("Amount_Commission").value);
-            var Discount = parseFloat(document.getElementById("Discount").value);
-            var Rate_VAT = parseFloat(document.getElementById("Rate_VAT").value);
-            var Value_VAT = parseFloat(document.getElementById("Value_VAT").value);
+    // التحقق من صحة المدخلات
+    if (Amount_collection === 0 || Rate_VAT === 0) {
+        alert("يرجى إدخال مبلغ التحصيل ونسبة الضريبة بشكل صحيح.");
+        return;
+    }
 
-            var Amount_Commission2 = Amount_Commission - Discount;
+    // حساب قيمة الضريبة
+    var VAT_Value = (Amount_collection - Discount) * (Rate_VAT / 100);
 
+    // حساب الإجمالي (مبلغ التحصيل + قيمة الضريبة + مبلغ العمولة - الخصم)
+    var Total = Amount_collection + VAT_Value + Amount_Commission - Discount;
 
-            if (typeof Amount_Commission === 'undefined' || !Amount_Commission) {
+    // القيمة المضافة هي الإجمالي ناقص مبلغ التحصيل
+    Value_VAT = Total - Amount_collection;
 
-                alert('يرجي ادخال مبلغ العمولة ');
+    // تحديث الحقول بالقيم المحسوبة
+    document.getElementById("Value_VAT").value = Value_VAT.toFixed(2);
+    document.getElementById("Total").value = Total.toFixed(2);
+}
 
-            } else {
-                var intResults = Amount_Commission2 * Rate_VAT / 100;
+            
 
-                var intResults2 = parseFloat(intResults + Amount_Commission2);
-
-                sumq = parseFloat(intResults).toFixed(2);
-
-                sumt = parseFloat(intResults2).toFixed(2);
-
-                document.getElementById("Value_VAT").value = sumq;
-
-                document.getElementById("Total").value = sumt;
-
-            }
-
-        }
+        
 
     </script>
     {{-- 88888888888888888888888888888888888888888888888888888888888888 --}}

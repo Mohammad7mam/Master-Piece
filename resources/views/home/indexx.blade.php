@@ -70,16 +70,23 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <!--end navbar-toggler-->
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="direction: rtl;text-align: right;flot:left">
               <div class="navbar-nav ml-auto">
+                <a
+                class="nav-item nav-link ts-scroll btn btn-primary btn-sm text-white ml-3 px-3 ts-width__auto"
+                style="background-color: #00bbff; border: #00bbff solid 2.5px"
+                href="{{ route('show-login') }}"
+                >تسجيل دخول</a
+              >
+
                 <a class="nav-item nav-link active ts-scroll" href="#page-top"
-                  >Home <span class="sr-only">(current)</span></a
+                  >الرئيسية <span class="sr-only">(current)</span></a
                 >
-                <a class="nav-item nav-link ts-scroll" href="#how-it-looks"
-                  >How It Looks</a
+{{--                 <a class="nav-item nav-link ts-scroll" href="#how-it-looks"
+                  >كيف يبدو</a
                 >
-                <a class="nav-item nav-link ts-scroll" href="#what-is-appstorm"
-                  >About</a
+ --}}                <a class="nav-item nav-link ts-scroll" href="#what-is-appstorm"
+                  >من نحن</a
                 >
                 <!--                 <a class="nav-item nav-link ts-scroll" href="#pricing"
                   >Pricing</a
@@ -89,16 +96,10 @@
                 >
                 <a class="nav-item nav-link ts-scroll" href="#gallery"
                   >Galley</a
-                >
- -->
+                >-->
                 <a class="nav-item nav-link ts-scroll" href="#form-contact"
-                  >Contact</a
-                >
-                <a
-                  class="nav-item nav-link ts-scroll btn btn-primary btn-sm text-white ml-3 px-3 ts-width__auto"
-                  style="background-color: #00bbff; border: #00bbff solid 2.5px"
-                  href="{{ route('show-login') }}"
-                  >Download</a
+                  >اتصل بنا
+                  </a
                 >
               </div>
               <!--end navbar-nav-->
@@ -148,8 +149,8 @@
               >
                 كل فواتيرك في مكان واحد
               </h1>
-              <a href="#how-it-works" class="btn btn-light btn-lg ts-scroll"
-                >تسجيل دخول</a
+              <a href="#form-contact" class="btn btn-light btn-lg ts-scroll"
+                >تواصل معنا</a
               >
             </div>
           </div>
@@ -294,15 +295,15 @@
             >
               <li class="nav-item">
                 <a
-                  class="nav-link active"
-                  id="desktop-tab"
+                  class="nav-link"
+                  id="mobile-tab"
                   data-toggle="tab"
-                  href="#desktop"
+                  href="#mobile"
                   role="tab"
-                  aria-controls="desktop"
-                  aria-selected="true"
+                  aria-controls="mobile"
+                  aria-selected="false"
                 >
-                  <h4>Desktop</h4>
+                  <h4>جوال</h4>
                 </a>
               </li>
               <li class="nav-item">
@@ -315,20 +316,20 @@
                   aria-controls="tablet"
                   aria-selected="false"
                 >
-                  <h4>Tablet</h4>
+                  <h4>جهاز لوحي</h4>
                 </a>
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link"
-                  id="mobile-tab"
-                  data-toggle="tab"
-                  href="#mobile"
-                  role="tab"
-                  aria-controls="mobile"
-                  aria-selected="false"
+                class="nav-link active"
+                id="desktop-tab"
+                data-toggle="tab"
+                href="#desktop"
+                role="tab"
+                aria-controls="desktop"
+                aria-selected="true"
                 >
-                  <h4>Mobile</h4>
+                  <h4>حاسوب</h4>
                 </a>
               </li>
             </ul>
@@ -399,7 +400,7 @@
                   الأخطاء وتحقيق شفافية أكبر في إدارة العمليات المالية للشحنات.
                 </p>
                 <a href="#form-contact" class="btn btn-primary mb-4 ts-scroll"
-                  >Contact Us</a
+                  >تواصل معنا</a
                 >
               </div>
               <!--end col-xl-5-->
@@ -619,7 +620,7 @@
                   {{-- <h3>Contact Form</h3> --}}
                   <form
                   id="form-contact"
-                  action="{{ route('send.email') }}"
+                  action="/send-email"
                   method="POST"
                   class="clearfix ts-form ts-form-email ts-inputs__transparent"
                 >

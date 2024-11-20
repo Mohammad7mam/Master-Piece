@@ -29,10 +29,10 @@ return view('users.show_users',compact('data'))
 */
 public function create()
 {
-$roles = Role::pluck('name','name')->all();
+    $roles = Role::pluck('name', 'name')->all();
+    $user = new User(); // كائن جديد فارغ للمستخدم
 
-return view('users.Add_user',compact('roles'));
-
+    return view('users.Add_user', compact('roles', 'user'));
 }
 /**
 * Store a newly created resource in storage.
@@ -46,13 +46,26 @@ $this->validate($request, [
 'name' => 'required',
 'email' => 'required|email|unique:users,email',
 'password' => 'required|same:confirm-password',
-'roles_name' => 'required'
+'roles_name' => 'required',
+'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
 ]);
 
 $input = $request->all();
 
 
 $input['password'] = Hash::make($input['password']);
+
+    // التعامل مع رفع الصورة
+    if ($request->hasFile('profile_image')) {
+      $imageName = time() . '.' . $request->profile_image->extension();
+      $request->profile_image->move(public_path('storage/profile_images'), $imageName);
+      $input['profile_image'] = $imageName;
+  } else {
+      // إذا لم يتم تحميل صورة، يتم تعيين المسار الافتراضي
+      $input['profile_image'] = 'assets/img/faces/6.jpg';
+  }
+
 
 $user = User::create($input);
 $user->assignRole($request->input('roles_name'));

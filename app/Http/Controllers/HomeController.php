@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\invoices;
+use App\Http\Controllers\Controller;
+use App\User;
+use Spatie\Permission\Models\Role;
+
 class HomeController extends Controller
 {
     /**
@@ -32,7 +36,13 @@ class HomeController extends Controller
       $count_invoices1 = invoices::where('Value_Status', 1)->count();
       $count_invoices2 = invoices::where('Value_Status', 2)->count();
       $count_invoices3 = invoices::where('Value_Status', 3)->count();
+      
+      $total_amount_invoices_all = invoices::where('Value_Status')->sum('Total');
+      $total_amount_invoices1 = invoices::where('Value_Status', 1)->sum('Total');
+      $total_amount_invoices2 = invoices::where('Value_Status', 2)->sum('Total');
+      $total_amount_invoices3 = invoices::where('Value_Status', 3)->sum('Total');
 
+      
       if($count_invoices2 == 0){
           $nspainvoices2=0;
       }
@@ -63,18 +73,18 @@ class HomeController extends Controller
             ->datasets([
                 [
                     "label" => "الفواتير الغير المدفوعة",
-                    'backgroundColor' => ['#ec5858'],
-                    'data' => [$nspainvoices2]
+                    'backgroundColor' => ['#f93a5a'],
+                    'data' => [number_format($nspainvoices2)]
                 ],
                 [
                     "label" => "الفواتير المدفوعة",
                     'backgroundColor' => ['#81b214'],
-                    'data' => [$nspainvoices1]
+                    'data' => [number_format($nspainvoices1)]
                 ],
                 [
                     "label" => "الفواتير المدفوعة جزئيا",
                     'backgroundColor' => ['#ff9642'],
-                    'data' => [$nspainvoices3]
+                    'data' => [number_format($nspainvoices3)]
                 ],
 
 
@@ -89,8 +99,8 @@ class HomeController extends Controller
             ->labels(['الفواتير الغير المدفوعة', 'الفواتير المدفوعة','الفواتير المدفوعة جزئيا'])
             ->datasets([
                 [
-                    'backgroundColor' => ['#ec5858', '#81b214','#ff9642'],
-                    'data' => [$nspainvoices2, $nspainvoices1,$nspainvoices3]
+                    'backgroundColor' => ['#f93a5a', '#81b214','#ff9642'],
+                    'data' => [$total_amount_invoices2, $total_amount_invoices1,$total_amount_invoices3]
                 ]
             ])
             ->options([]);
@@ -98,6 +108,14 @@ class HomeController extends Controller
         return view('home', compact('chartjs','chartjs_2'));
 
     }
+    public function edit($id)
+{
+$user = User::find($id);
+$roles = Role::pluck('name','name')->all();
+$userRole = $user->roles->pluck('name','name')->all();
+return view('layouts.main-sidebar',compact('user','roles','userRole'));
+}
+
 
 
 }

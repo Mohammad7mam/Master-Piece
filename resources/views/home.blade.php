@@ -52,9 +52,9 @@
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
 
-                                    {{ number_format(\App\invoices::sum('Total'), 2) }}
+                                    {{ number_format(\App\invoices::sum('Total')) }} JD
                                 </h4>
-                                <p class="mb-0 tx-12 text-white op-7">{{ \App\invoices::count() }}</p>
+                                <p class="mb-0 tx-12 text-white op-8" style="font-size: 1rem">{{ \App\invoices::count() }}</p>
                             </div>
                             <span class="float-right my-auto mr-auto">
                                 <i class="fas fa-arrow-circle-up text-white"></i>
@@ -77,10 +77,10 @@
                             <div class="">
                                 <h3 class="tx-20 font-weight-bold mb-1 text-white">
 
-                                    {{ number_format(\App\invoices::where('Value_Status', 2)->sum('Total'), 2) }}
+                                    {{ number_format(\App\invoices::where('Value_Status', 2)->sum('Total')) }} JD
 
                                 </h3>
-                                <p class="mb-0 tx-12 text-white op-7">{{ \App\invoices::where('Value_Status', 2)->count() }}
+                                <p class="mb-0 tx-12 text-white op-8" style="font-size: 1rem">{{ \App\invoices::where('Value_Status', 2)->count() }}
                                 </p>
                             </div>
                             <span class="float-right my-auto mr-auto">
@@ -88,16 +88,17 @@
                                 <span class="text-white op-7">
 
                                     @php
-                                    $count_all= \App\invoices::count();
-                                    $count_invoices2 = \App\invoices::where('Value_Status', 2)->count();
+                                        $total_amount_invoices_all = \App\invoices::sum('Total');
+                                        $total_amount_invoices2 = \App\invoices::where('Value_Status', 2)->sum('Total');
 
-                                    if($count_invoices2 == 0){
-                                       echo $count_invoices2 = 0;
+                                    if($total_amount_invoices2 == 0){
+                                       echo $total_amount_invoices2 = 0;
                                     }
                                     else{
-                                       echo $count_invoices2 = $count_invoices2 / $count_all *100;
+                                       echo $total_amount_invoices2 = number_format($total_amount_invoices2 / $total_amount_invoices_all * 100,2);     
+
                                     }
-                                    @endphp
+                                    @endphp%
 
                                 </span>
                             </span>
@@ -118,10 +119,10 @@
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
 
-                                    {{ number_format(\App\invoices::where('Value_Status', 1)->sum('Total'), 2) }}
+                                    {{ number_format(\App\invoices::where('Value_Status', 1)->sum('Total')) }} JD
 
                                 </h4>
-                                <p class="mb-0 tx-12 text-white op-7">
+                                <p class="mb-0 tx-12 text-white op-8" style="font-size: 1rem">
                                     {{ \App\invoices::where('Value_Status', 1)->count() }}
                                 </p>
                             </div>
@@ -129,16 +130,16 @@
                                 <i class="fas fa-arrow-circle-up text-white"></i>
                                 <span class="text-white op-7">
                                     @php
-                                        $count_all= \App\invoices::count();
-                                        $count_invoices1 = \App\invoices::where('Value_Status', 1)->count();
+                                        $total_amount_invoices_all = \App\invoices::sum('Total');
+                                        $total_amount_invoices1 = \App\invoices::where('Value_Status', 1)->sum('Total');
 
-                                        if($count_invoices1 == 0){
-                                           echo $count_invoices1 = 0;
+                                        if($total_amount_invoices1 == 0){
+                                           echo $total_amount_invoices1 = 0;
                                         }
                                         else{
-                                           echo $count_invoices1 = $count_invoices1 / $count_all *100;
+                                           echo $total_amount_invoices1 = number_format($total_amount_invoices1 / $total_amount_invoices_all *100,2 );
                                         }
-                                    @endphp
+                                    @endphp%
                                 </span>
                             </span>
                         </div>
@@ -158,10 +159,10 @@
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
 
-                                    {{ number_format(\App\invoices::where('Value_Status', 3)->sum('Total'), 2) }}
+                                    {{ number_format(\App\invoices::where('Value_Status', 3)->sum('Total')) }} JD
 
                                 </h4>
-                                <p class="mb-0 tx-12 text-white op-7">
+                                <p class="mb-0 tx-12 text-white op-8" style="font-size: 1rem ; COLOR: rgb(255, 0, 0)">
                                     {{ \App\invoices::where('Value_Status', 3)->count() }}
                                 </p>
                             </div>
@@ -169,16 +170,16 @@
                                 <i class="fas fa-arrow-circle-down text-white"></i>
                                 <span class="text-white op-7">
                                     @php
-                                        $count_all= \App\invoices::count();
-                                        $count_invoices1 = \App\invoices::where('Value_Status', 1)->count();
+                                        $total_amount_invoices_all = \App\invoices::sum('Total');
+                                        $total_amount_invoices3 = \App\invoices::where('Value_Status', 3)->sum('Total');
 
-                                        if($count_invoices1 == 0){
-                                            echo $count_invoices1 = 0;
+                                        if($total_amount_invoices3 == 0){
+                                            echo $total_amount_invoices3 = 0;
                                         }
                                         else{
-                                          echo $count_invoices1 = $count_invoices1 / $count_all *100;
+                                          echo $total_amount_invoices3 = number_format($total_amount_invoices3 / $total_amount_invoices_all *100,2);
                                         }
-                                    @endphp
+                                    @endphp%
                                 </span>
                             </span>
                         </div>
@@ -196,7 +197,7 @@
             <div class="card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">نسبة احصائية الفواتير</h4>
+                        <h4 class="card-title mb-0">نسبة عدد الفواتير</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
 
@@ -211,7 +212,7 @@
 
         <div class="col-lg-12 col-xl-5">
             <div class="card card-dashboard-map-one">
-                <label class="main-content-label">نسبة احصائية الفواتير</label>
+                <label class="main-content-label">نسبة قيمة الفواتير</label>
                 <div class="" style="width: 100%">
                     {!! $chartjs_2->render() !!}
                 </div>

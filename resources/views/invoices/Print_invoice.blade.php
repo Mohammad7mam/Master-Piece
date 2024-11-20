@@ -32,25 +32,19 @@
             <div class=" main-content-body-invoice" id="print">
                 <div class="card card-invoice">
                     <div class="card-body">
-                        <div class="invoice-header">
-                            <h1 class="invoice-title">فاتورة تحصيل</h1>
-                            <div class="billed-from">
-                                <h6>BootstrapDash, Inc.</h6>
-                                <p>201 Something St., Something Town, YT 242, Country 6546<br>
-                                    Tel No: 324 445-4544<br>
-                                    Email: youremail@companyname.com</p>
-                            </div><!-- billed-from -->
+                        <div class="invoice-header" >
+                            
+                            <div class="billed-from"style="text-align: left">
+                                <br>
+                                <br><br><br>
+                                <h6>ShipPay</h6>
+                                <p> Queen Rania St., Sports City Roundabout, Amman, Jordan<br>
+                                    Tel No: +962 7 9535 6845<br>
+                                    Email: Mohammadhamam007@gmail.com</p>
+                            </div>
+                            <h1 class="invoice-title">فاتورة تحصيل</h1><!-- billed-from -->
                         </div><!-- invoice-header -->
                         <div class="row mg-t-20">
-                            <div class="col-md">
-                                <label class="tx-gray-600">Billed To</label>
-                                <div class="billed-to">
-                                    <h6>Juan Dela Cruz</h6>
-                                    <p>4033 Patterson Road, Staten Island, NY 10301<br>
-                                        Tel No: 324 445-4544<br>
-                                        Email: youremail@companyname.com</p>
-                                </div>
-                            </div>
                             <div class="col-md">
                                 <label class="tx-gray-600">معلومات الفاتورة</label>
                                 <p class="invoice-info-row"><span>رقم الفاتورة</span>
@@ -62,6 +56,16 @@
                                 <p class="invoice-info-row"><span>القسم</span>
                                     <span>{{ $invoices->section->section_name }}</span></p>
                             </div>
+                            <div class="col-md" style="text-align: left">
+                                <label class="tx-gray-600">Billed To</label>
+                                <div class="billed-to">
+                                    <h6>Moath Altamimi</h6>
+                                    <p> University Street., University of Jordan, Amman, Jordan<br>
+                                        Tel No: +962 7 9555 8484<br>
+                                        Email: moathAltamimi@gmail.com</p>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="table-responsive mg-t-40">
                             <table class="table table-invoice border text-md-nowrap mb-0">

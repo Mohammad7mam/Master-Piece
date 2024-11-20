@@ -92,6 +92,8 @@
                                 <option value="غير مفعل">غير مفعل</option>
                             </select>
                         </div>
+ 
+                                                                        
                     </div>
 
                     <div class="row mg-b-20">

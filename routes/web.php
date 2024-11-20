@@ -26,7 +26,10 @@ Route::get('/show-login', function () {
 Auth::routes();
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+/* Route::get('/home', 'HomeController@index')->name('home'); */
+Route::resource('home', 'HomeController');
+
+
 
 Route::resource('invoices', 'InvoicesController');
 /* Route::get('invoicess/{id}', 'InvoicesController@show'); انا سويته */
@@ -90,8 +93,13 @@ Route::get('unreadNotifications_count', 'InvoicesController@unreadNotifications_
 
 Route::get('unreadNotifications', 'InvoicesController@unreadNotifications')->name('unreadNotifications');
 
-Route::post('/send-email', [ContactController::class, 'send'])->name('send.email');
+ Route::post('/send-email', [ContactController::class, 'send'])->name('send.email');
 
+
+/* Route::post('/send-email', [ContactController::class, 'submit'])->name('send.email');
+ */
+
+/* Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit'); */
 
 
 Route::get('/{page}', 'AdminController@index');

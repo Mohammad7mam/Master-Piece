@@ -6,7 +6,11 @@
 @section('css')
     <!-- Sidemenu-respoansive-tabs css -->
     <link href="{{URL::asset('assets/plugins/sidemenu-responsive-tabs/css/sidemenu-responsive-tabs.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
 @endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row no-gutter">
@@ -71,16 +75,46 @@
                 </div>
             </div><!-- End -->
 
-            <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent" >
-                <div class="row wd-100p mx-auto text-center">
+            <div  class=" col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent" >
+                {{-- <div class="row wd-100p mx-auto text-center">
                     <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
                         <img src="{{URL::asset('assets/img/media/login.png')}}" class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
                     </div>
+                </div>--}}
+                
+                <div id="carouselExample" class="carousel slide ">
+                    <div class="carousel-inner text-center">
+                        <!-- العنصر الأول -->
+                        <div class=" col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p carousel-item">
+                            <br>
+                            <img src="{{ URL::asset('assets/img/media/login2.png') }}"style="width: 82%; hight:82%" alt="First Slide">
+                        </div>
+                        <!-- العنصر الثاني -->
+                        <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p carousel-item ">
+                            <br>
+                            <img src="{{ URL::asset('assets/img/media/login1.png') }}" style="width: 82%; hight:82%" alt="Second Slide" >
+                        </div>
+                        <!-- العنصر الثالث (نشط) -->
+                        <div class=" col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p  carousel-item active">
+                            <br>
+                            <img src="{{ URL::asset('assets/img/media/login.png') }}" style="width: 82%; hight:82%"  alt="Third Slide">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                        <span class="visually"><h1 style="font-family: 'Manrope', Courier, monospace">></h1></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                        <span class="visually"><h1 style="font-family: 'Manrope', Courier, monospace"><</h1></span>
+                    </button>
                 </div>
-            </div>
-
+                
         </div>
     </div>
 @endsection
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection
+
